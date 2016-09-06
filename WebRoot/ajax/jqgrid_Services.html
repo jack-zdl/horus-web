@@ -1,0 +1,294 @@
+<!-- Bread crumb is created dynamically -->
+<!-- row -->
+<div class="row">
+	
+	<!-- col -->
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			
+			<!-- PAGE HEADER -->
+			<i class="fa-fw fa fa-table"></i> 
+				Tables
+			<span>>  
+				Jquery Grid
+			</span>
+		</h1>
+	</div>
+	<!-- end col -->
+	
+	<!-- right side of the page with the sparkline graphs -->
+	<!-- col -->
+	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<!-- sparks -->
+		<ul id="sparks">
+			<li class="sparks-info">
+				<h5> My Income <span class="txt-color-blue">$47,171</span></h5>
+				<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+					1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+				<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+				<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+		</ul>
+		<!-- end sparks -->
+	</div>
+	<!-- end col -->
+	
+</div>
+<!-- end row -->
+
+<!--
+	The ID "widget-grid" will start to initialize all widgets below 
+	You do not need to use widgets if you dont want to. Simply remove 
+	the <section></section> and you can use wells or panels instead 
+	-->
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+		
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+				<div class="alert alert-info">
+					<h4>jqGrid is a grid plugin for the JQuery Javascript library. It is free, open source and gets distributed under the MIT license.</h4>
+					<br>
+					<div class="col-sm-4">
+						<ul>
+							<li>
+								Works fine under IE, Firefox, Chrome, Safari, Opera
+							</li>
+							<li>
+								The UI comes in 20+ languages
+							</li>
+
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul>
+							<li>
+								In-place cell editing or on-the-fly form creation to edit a record
+							</li>
+							<li>
+								Supports subgrids and tree grid for displaying hierarchical data
+							</li>
+
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul>
+							<li>
+								AJAX enabled - Accepts XML/JSON/local array data sources
+							</li>
+							<li>
+								Paging, sorting, Search and filtering
+							</li>
+						</ul>
+					</div>
+					
+					http://trirand.com/blog/jqgrid/jqgrid.html
+				</div>
+				
+				<table id="jqgrid"></table>
+				<div id="pjqgrid"></div>
+				
+				<br>
+				<a href="javascript:void(0)" id="m1">Get Selected id's</a><br>
+				<a href="javascript:void(0)" id="m1s">Select(Unselect) row 13</a>
+
+		</article>
+		<!-- WIDGET END -->
+		
+	</div>
+
+	<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+<script type="text/javascript">
+	 
+	/* DO NOT REMOVE : GLOBAL FUNCTIONS!
+	 *
+	 * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
+	 *
+	 * // activate tooltips
+	 * $("[rel=tooltip]").tooltip();
+	 *
+	 * // activate popovers
+	 * $("[rel=popover]").popover();
+	 *
+	 * // activate popovers with hover states
+	 * $("[rel=popover-hover]").popover({ trigger: "hover" });
+	 *
+	 * // activate inline charts
+	 * runAllCharts();
+	 *
+	 * // setup widgets
+	 * setup_widgets_desktop();
+	 *
+	 * // run form elements
+	 * runAllForms();
+	 *
+	 ********************************
+	 *
+	 * pageSetUp() is needed whenever you load a page.
+	 * It initializes and checks for all basic elements of the page
+	 * and makes rendering easier.
+	 *
+	 */
+
+	pageSetUp();
+	
+	/*
+	 * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
+	 * eg alert("my home function");
+	 * 
+	 * var pagefunction = function() {
+	 *   ...
+	 * }
+	 * loadScript("js/plugin/_PLUGIN_NAME_.js", pagefunction);
+	 * 
+	 */
+	
+	var pagefunction = function() {
+		loadScript("js/plugin/jqgrid/jquery.jqGrid.min.js", run_jqgrid_function);
+
+		function run_jqgrid_function() {
+
+
+			
+
+			jQuery("#jqgrid").jqGrid({
+			
+			 	url:"horus/machine/queryServices.do",
+        		datatype:"json", //鏁版嵁鏉ユ簮锛屾湰鍦版暟鎹�
+        		mtype:"POST",//鎻愪氦鏂瑰紡
+			//浠ヤ笂鏄嚜宸卞啓鐨勶紝閫氳繃url鏉ヤ粠鍚庡彴鑾峰緱API鏁版嵁锛屽～鍏呰〃鏍�
+//				data : jqgrid_data,
+//				datatype : "local",
+				height : 'auto',
+				colNames : ["Actions", "实例名称", "所属用户","所属站点", "所属子系统", "软件版本", "部署架构", "性能套餐", "管理状态","运行状态","创建时间"],
+				colModel : [
+					{ name : 'act', index:'act', sortable:false }, //sortable:鏄惁鎺掑簭
+					{ name : 'name', index : 'name' }, 					//index鍏朵笌鍚庡彴API鏁版嵁浜や簰
+					{ name : 'user', index : 'name', editable : true }, 	//editable 鍗曞厓鏍兼槸鍚﹀彲缂栬緫
+					{ name : 'room', index : 'name', editable : true }, 
+					{ name : 'admin_ip', index : 'name', align : "right", editable : true }, 
+					{ name : 'room', index : 'name', align : "right", editable : true }, 
+					{ name : 'seat', index : 'name', align : "right", editable : true }, 
+					{ name : 'register_at', index : 'name', sortable : false, editable : true },
+					{ name : 'status', index : 'status', sortable : false, editable : true },
+					{ name : 'running_status', index : 'running_status', sortable : false, editable : true },
+					{ name : 'created_at', index : 'created_at', sortable : false, editable : true }],
+				rowNum : 10,
+				rowList : [10, 20, 30],
+				pager : '#pjqgrid',		//瀹氫箟 缈婚〉璁剧疆
+				sortname : 'name',		//瀹氫箟浠d鏈帓搴忕粨鏋�
+				toolbarfilter: true,	//???
+				viewrecords : true,   //瀹氫箟鏄惁鏄剧ず鎬昏褰曟暟
+				sortorder : "asc",		//鎺掑簭椤哄簭锛屽崌搴忔垨鑰呴檷搴忥紙asc or desc锛�
+				gridComplete: function(){    	//	褰撹〃鏍兼墍鏈夋暟鎹兘鍔犺浇瀹屾垚鑰屼笖鍏朵粬鐨勫鐞嗕篃閮藉畬鎴愭椂瑙﹀彂姝や簨浠讹紝鎺掑簭锛岀炕椤靛悓鏍蜂篃浼氳Е鍙戞浜嬩欢    灏辨槸缁欐瘡鏉℃暟鎹鍔犱慨鏀癸紝淇濆瓨锛屽垹闄�
+					var ids = jQuery("#jqgrid").jqGrid('getDataIDs');  	//杩斿洖褰撳墠grid閲屾墍鏈夋暟鎹殑id
+					for(var i=0;i < ids.length;i++){
+						var cl = ids[i];
+						be = "<button class='btn btn-xs btn-default' data-original-title='Edit Row' onclick=\"jQuery('#jqgrid').editRow('"+cl+"');\"><i class='fa fa-pencil'></i></button>"; 
+						se = "<button class='btn btn-xs btn-default' data-original-title='Save Row' onclick=\"jQuery('#jqgrid').saveRow('"+cl+"');\"><i class='fa fa-save'></i></button>";
+						ca = "<button class='btn btn-xs btn-default' data-original-title='Cancel' onclick=\"jQuery('#jqgrid').restoreRow('"+cl+"');\"><i class='fa fa-times'></i></button>";  
+						//ce = "<button class='btn btn-xs btn-default' onclick=\"jQuery('#jqgrid').restoreRow('"+cl+"');\"><i class='fa fa-times'></i></button>"; 
+						//jQuery("#jqgrid").jqGrid('setRowData',ids[i],{act:be+se+ce});
+						//setRowData    鏇存柊琛岀殑鍊硷紝rowid涓鸿id銆俤ata鍊兼牸寮忥細{name1:value1,name2: value2鈥 name涓篶olModel涓悕绉帮紱cssprop锛氬鏋滄槸string鍒欎細浣跨敤addClass鏂规硶灏嗗叾鍔犲叆鍒拌鐨刢ss涓紝濡傛灉鏄痑rray鎴栬�呭璞� 鍒欎細鐩存帴鍔犲埌style灞炴�т腑
+						jQuery("#jqgrid").jqGrid('setRowData',ids[i],{act:be+se+ca});
+					}	
+				},
+				editurl : "dummy.html",  //瀹氫箟瀵筬orm缂栬緫鏃剁殑url
+				caption : "SmartAdmin jQgrid Skin",  //琛ㄦ牸鍚嶇О
+				multiselect : true,  //瀹氫箟鏄惁鍙互澶氶��
+				autowidth : true,   //濡傛灉涓簍ure鏃讹紝鍒欏綋琛ㄦ牸鍦ㄩ娆¤鍒涘缓鏃朵細鏍规嵁鐖跺厓绱犳瘮渚嬮噸鏂拌皟鏁磋〃鏍煎搴︺�傚鏋滅埗鍏冪礌瀹藉害鏀瑰彉锛屼负浜嗕娇琛ㄦ牸瀹藉害鑳藉鑷姩璋冩暣鍒欓渶瑕佸疄鐜板嚱鏁帮細setGridWidth
+
+				});
+				
+				//鑷畾涔夋寜閽�   浣嶄簬#pjqgrid
+				jQuery("#jqgrid").jqGrid('navGrid', "#pjqgrid", {
+					edit : false,
+					add : false,
+					del : true
+				});
+				jQuery("#jqgrid").jqGrid('inlineNav', "#pjqgrid");
+				/* Add tooltips */
+				$('.navtable .ui-pg-button').tooltip({
+					container : 'body'
+				});
+
+				jQuery("#m1").click(function() {
+					var s;
+					s = jQuery("#jqgrid").jqGrid('getGridParam', 'selarrrow');
+					alert(s);
+				});
+				jQuery("#m1s").click(function() {
+					jQuery("#jqgrid").jqGrid('setSelection', "13");
+				});
+				
+				// remove classes
+				$(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+			    $(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");  //鎵惧埌浠栫殑瀛愬厓绱犵劧鍚庣Щ闄よ绫�
+			    $(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+			    $(".ui-jqgrid-pager").removeClass("ui-state-default");
+			    $(".ui-jqgrid").removeClass("ui-widget-content");
+			    
+			    // add classes
+			    $(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+			    $(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
+			   
+			   
+			    $(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+			    $(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+			    $(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+			    $(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+			    $(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+			    $(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+			    $(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+			    $(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+			  
+				$( ".ui-icon.ui-icon-seek-prev" ).wrap( "<div class='btn btn-sm btn-default'></div>" );
+				$(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+				
+				$( ".ui-icon.ui-icon-seek-first" ).wrap( "<div class='btn btn-sm btn-default'></div>" );
+			  	$(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");		  	
+	
+			  	$( ".ui-icon.ui-icon-seek-next" ).wrap( "<div class='btn btn-sm btn-default'></div>" );
+			  	$(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+			  	
+			  	$( ".ui-icon.ui-icon-seek-end" ).wrap( "<div class='btn btn-sm btn-default'></div>" );
+			  	$(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+			  	
+			  	
+			  
+			  
+			    // update buttons
+			    
+			    $(window).on('resize.jqGrid', function () {  //璋冩暣澶у皬   闅忕潃#content璋冩暣澶у皬
+					jQuery("#jqgrid").jqGrid( 'setGridWidth', $("#content").width() );
+				})
+
+
+			} // end function
+
+
+	}
+	
+	loadScript("js/plugin/jqgrid/grid.locale-en.min.js", pagefunction);
+	
+</script>

@@ -1,0 +1,221 @@
+{
+	"variables": [],
+	"info": {
+		"name": "service manager",
+		"_postman_id": "99145b50-debf-3029-4589-d36686fe8af5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list services",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get service",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create service for one upsql",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r  \"name\": \"test01\",\r  \"arch\": \"upsql:1\",\r  \"modules\": [\r    {\r      \"name\": \"upsql\",\r      \"version\": \"5.6.19\",\r      \"type\": \"upsql\",\r      \"arch\": \"master:1\",\r      \"stores\": [\r        {\r          \"name\": \"DAT\",\r          \"type\": \"local:HDD\",\r          \"size\": 1024000000\r        },\r        {\r          \"name\": \"LOG\",\r          \"type\": \"local:HDD\",\r          \"size\": 1024000000\r        }\r      ],\r      \"host_config\": {\r        \"cpusetcpus\": \"1\",\r        \"memory\": 2048000000,\r        \"networkmode\": \"host\"\r      }\r    }\r  ],\r  \"backup_strategy\": {\r    \"type\": \"full\",\r    \"spec\": \"* * * * *\",\r    \"valid\": \"2006-01-02 15:04:05\",\r    \"timeout\": 600,\r    \"retention\": 6000,\r    \"maxsize\": 102400000000,\r    \"backupdir\": \"/BACKUP/\"\r  }\r}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create service for one sm1 proxy1 upsql1",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"test01\",\n  \"arch\": \"switch_manager:1#proxy:1#upsql:1\",\n  \"modules\": [\n    {\n      \"name\": \"switch_manager\",\n      \"version\": \"1.0.2\",\n      \"type\": \"switch_manager\",\n      \"arch\": \"master:1\",\n      \"stores\": [\n        {\n          \"name\": \"CNF\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        },\n        {\n          \"name\": \"LOG\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        }\n      ],\n      \"host_config\": {\n        \"cpusetcpus\": \"1\",\n        \"memory\": 1024000000,\n        \"networkmode\": \"host\"\n      }\n    },\n    {\n      \"name\": \"upproxy\",\n      \"version\": \"1.0.2\",\n      \"type\": \"proxy\",\n      \"arch\": \"master:1\",\n      \"stores\": [\n        {\n          \"name\": \"CNF\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        },\n        {\n          \"name\": \"LOG\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        }\n      ],\n      \"host_config\": {\n        \"cpusetcpus\": \"1\",\n        \"memory\": 1024000000,\n        \"networkmode\": \"host\"\n      }\n    },\n    {\n      \"name\": \"upsql\",\n      \"version\": \"5.6.19\",\n      \"type\": \"upsql\",\n      \"arch\": \"master:1\",\n      \"stores\": [\n        {\n          \"name\": \"DAT\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        },\n        {\n          \"name\": \"LOG\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        }\n      ],\n      \"host_config\": {\n        \"cpusetcpus\": \"1\",\n        \"memory\": 2048000000,\n        \"networkmode\": \"host\"\n      }\n    }\n  ],\n  \"backup_strategy\": {\n    \"type\": \"full\",\n    \"spec\": \"* * * * *\",\n    \"valid\": \"2006-01-02 15:04:05\",\n    \"timeout\": 600,\n    \"retention\": 6000,\n    \"maxsize\": 102400000000,\n    \"backupdir\": \"/BACKUP/\"\n  },\n  \"users\":[\n      {\n          \"type\": \"proxy\",\n          \"username\": \"user001\",\n          \"password\": \"123456\",\n          \"role\": \"db\"\n      }\n      ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create service for one sm1 proxy1 upsql2",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"test01\",\n  \"arch\": \"switch_manager:1#proxy:1#upsql:2\",\n  \"backup_maxsize\": 102400000000,\n  \"backup_retention\": 6000,\n  \"modules\": [\n    {\n      \"name\": \"switch_manager\",\n      \"version\": \"1.0.2\",\n      \"type\": \"switch_manager\",\n      \"arch\": \"master:1\",\n      \"candidates\":[],\n      \"stores\": [\n        {\n          \"name\": \"CNF\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        },\n        {\n          \"name\": \"LOG\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        }\n      ],\n      \"host_config\": {\n        \"cpusetcpus\": \"1\",\n        \"memory\": 1024000000,\n        \"networkmode\": \"host\"\n      }\n    },\n    {\n      \"name\": \"upproxy\",\n      \"version\": \"1.0.2\",\n      \"type\": \"proxy\",\n      \"arch\": \"master:1\",\n      \"candidates\":[],\n      \"stores\": [\n        {\n          \"name\": \"CNF\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        },\n        {\n          \"name\": \"LOG\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        }\n      ],\n      \"host_config\": {\n        \"cpusetcpus\": \"1\",\n        \"memory\": 1024000000,\n        \"networkmode\": \"host\"\n      }\n    },\n    {\n      \"name\": \"upsql\",\n      \"version\": \"5.6.19\",\n      \"type\": \"upsql\",\n      \"arch\": \"master:1#standby:1\",\n      \"candidates\":[],\n      \"stores\": [\n        {\n          \"name\": \"DAT\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        },\n        {\n          \"name\": \"LOG\",\n          \"type\": \"local:HDD\",\n          \"size\": 1024000000\n        }\n      ],\n      \"host_config\": {\n        \"cpusetcpus\": \"1\",\n        \"memory\": 2048000000,\n        \"networkmode\": \"host\"\n      }\n    }\n  ],\n  \"backup_strategy\": {\n    \"type\": \"full\",\n    \"spec\": \"* * * * *\",\n    \"valid\": \"2006-01-02 15:04:05\",\n    \"timeout\": 600,\n    \"backupdir\": \"/BACKUP/\"\n  },\n  \"users\":[\n      {\n          \"type\": \"proxy\",\n          \"username\": \"user001\",\n          \"password\": \"123456\",\n          \"role\": \"db\"\n      }\n      ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "start service",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>/start",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "stop service",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>/stop",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "scale-up service",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>/scale-up",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"type\": \"upsql\",\n        \"config\": {\n            \"memory\": 2000000,\n            \"cpusetcpus\": \"2\"\n        }\n    }\n]"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "storage extend service",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>/volume-extend",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"type\": \"upsql\",\n        \"extensions\": [\n        {\n          \"name\": \"DAT\",\n          \"size\": 1024000000\n        }\n      ]\n    }\n]"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "backup service",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>/backup",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add backup stractegy",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>/backup_strategy",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"full\",\n    \"spec\": \"* * * * *\",\n    \"valid\": \"2006-01-02 15:04:05\",\n    \"timeout\": 600,\n    \"backupdir\": \"/BACKUP/\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete service",
+			"request": {
+				"url": "http://192.168.2.121:4000/v1.0/services/<service_id>",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

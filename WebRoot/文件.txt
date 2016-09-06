@@ -1,0 +1,97 @@
+
+<!-- 这个是我专门写log的配置文件 -->
+  <!-- 定义前置通知 -->
+ <bean id="allLogAdvice" class="com.bsg.horus.util.LoggerAdvice"></bean>
+
+
+<!-- 进行aop配置 -->  
+    <aop:config>    
+      <!-- 配置日志切面 -->  
+      <aop:aspect id="logaop" ref="allLogAdvice">         
+             
+        <aop:pointcut id="logpointcut" expression="execution(* com.bsg.horus.Service.*(..))" />  
+          
+        <!-- 将LogAdvice日志通知中的myBeforeAdvice方法指定为前置通知 -->  
+        <aop:before method="myBeforeAdvice" pointcut-ref="logpointcut"/>  
+          
+        <!-- 将LogAdvice日志通知中的myAfterReturnAdvice方法指定为后置通知 -->  
+        <aop:after-returning method="myAfterReturnAdvice" pointcut-ref="logpointcut"/>  
+          
+        <!-- 将LogAdvice日志通知中的方法指定为异常通知 -->  
+        <aop:after-throwing method="myThrowingAdvice" pointcut-ref="logpointcut" throwing="e" />  
+          
+        <!-- 将LogAdvice日志通知中的方法指定为环绕通知 -->  
+        <aop:around method="myAroundAdvice" pointcut-ref="logpointcut"/>  
+      </aop:aspect>  
+    </aop:config> 
+    
+    <!--<bean id="log"
+		class="com.bsg.horus.util.Log" /> 
+   <aop:config>
+		<aop:aspect ref="log">
+			<aop:pointcut
+				expression="execution(* com.bsg.horus.service.*.get*(..))"
+				id="logPointcut" />
+			<aop:before method="before" pointcut-ref="logPointcut" />
+			<aop:after method="after" pointcut-ref="logPointcut" />
+		</aop:aspect>
+	</aop:config>
+ --> 	
+ 
+ 
+  // 异常通知  
+	    @AfterThrowing("execution(** com.bsg.horus.service.*.*(..))||"+"execution(** com.bsg.horus.dao.*.*(..))")  
+	    public void myThrowingAdvice(JoinPoint jionpoint, Exception e) {  
+	        // 获取被调用的类名  
+	        String targetClassName = jionpoint.getTarget().getClass().getName();  
+	        // 获取被调用的方法名  
+	        String targetMethodName = jionpoint.getSignature().getName();  
+	        // 日志格式字符串  
+	        String logInfoText = "异常通知：执行" + targetClassName + "类的"  
+	                + targetMethodName + "方法时发生异常";  
+	        // 将日志信息写入配置的文件中  
+	        System.out.println("异常信息====。。。。。。。。。。。。");
+	        logger.info(logInfoText);  
+	    }  
+	  //环绕日志
+	    @Around("execution(* com.bsg.horus.service.*.*(..))||"+"execution(* com.bsg.horus.dao.*.*(..))")
+	    public void around(ProceedingJoinPoint joinPoint) throws Throwable {  
+	        System.out.println("开始Around开始进入日志");
+	        joinPoint.proceed();
+	        logger.info("开始Around开始进入日志");
+	    }  
+	    
+	    <bean id="cpu" class="com.bsg.horus.service.ServiceImpl_cpu"></bean>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver ">
+        <!-- 前缀-->
+        <property name="prefix" value="/"></property> 
+         <!-- 后缀--> 
+          <property name="suffix" value=".html"></property>
+        </bean>
+        
+        
+        web.xml
+        <!-- 指定spring配置文件位置   
+   <context-param>  
+      <param-name>contextConfigLocation</param-name>  
+      <param-value>  
+       <!--加载多个spring配置文件 
+        /WEB-INF/applicationContext.xml, /WEB-INF/action-servlet.xml  
+      </param-value>  
+   </context-param>  
+    --> 
+    
+    
+    <li>线程连接</li>
+																<li>线程缓存</li>
+																<li>负载查询</li>
+																<li>缓冲池大小</li>
+																<li>缓冲池脏页</li>
+																<li>缓冲池命中率</li>
+																<li>打开表数</li>
+																<li>表文件</li>
+																<li>锁等待</li>
+																<li>复制SQL线程状态</li>
+																<li>复制IO线程状态</li>
+																<li>error文件</li>
+																<li>慢文件</li>
