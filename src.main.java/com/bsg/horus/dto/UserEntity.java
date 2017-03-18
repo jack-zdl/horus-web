@@ -1,11 +1,11 @@
-package com.bsg.horus.model;
+package com.bsg.horus.dto;
 /**
  * @author zhangdelei@bsgchina.com
  * @data 2016��6��14������12:23:12
  * @Descriptiion TODO
  */
 
-public class User {
+public class UserEntity {
 	private static final long serialVersionUID = 1530127413381718585L;
 	private int ID;
 	private String username;
@@ -44,7 +44,7 @@ public class User {
 		this.email = email;
 	}
 	
-	public User() {
+	public UserEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

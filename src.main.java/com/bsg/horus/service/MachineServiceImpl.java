@@ -14,7 +14,7 @@ public class MachineServiceImpl {
 	 * @data 2016年7月27日下午5:49:35
 	 *@Description 这里是查询物理机(查询主机)的service层  负责逻辑处理
 	 */
-	private static Log log = LogFactory.getLog(ServiceImpl_machine.class);
+//	private static Log log = LogFactory.getLog(MachineServiceImpl.class);
 
 	@Resource(name="daoImpl")
 	private  DaoImpl daoImpl;
@@ -30,7 +30,7 @@ public class MachineServiceImpl {
 			result=daoImpl.getqueryMachinesByGet(fullURL);
 		}catch(Exception e){
 			  e.printStackTrace();
-			  log.info("Service_machine出现异常，   异常为"+e);
+	//		  log.info("Service_machine出现异常，   异常为"+e);
 		}
 		
 		return result;
@@ -43,7 +43,7 @@ public class MachineServiceImpl {
 			result=daoImpl.getqueryMachinesByGet(fullURL);
 		}catch(Exception e){
 			  e.printStackTrace();
-			  log.info("Service_Services出现异常，   异常为"+e);
+//			  log.info("Service_Services出现异常，   异常为"+e);
 		}
 		
 		return result;

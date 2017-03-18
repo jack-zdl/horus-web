@@ -1,4 +1,4 @@
-package com.bsg.horus.model;
+package com.bsg.horus.dto;
 
 
 /*
@@ -6,7 +6,7 @@ zhangdelei@bsgchina.com2016��6��14������11:07:48
 
 */
 
-public class Cpu {
+public class CpuEntity {
  
    private int  timestamp;
    private int value;
@@ -22,7 +22,7 @@ public int getValue() {
 public void setValue(int value) {
 	this.value = value;
 }
-public Cpu() {
+public CpuEntity() {
 	super();
 	// TODO Auto-generated constructor stub
 }

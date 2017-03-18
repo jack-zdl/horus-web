@@ -1,5 +1,5 @@
 /**@author  zhangdelei
- * @data 2017年3月18日上午10:23:27
- *@Description dto 业务层到控制层之间的数据传递，根据项目大小也可以与VO类合并
+ * @data 2017年3月18日上午10:21:40
+ *@Description  dto这是服务层控制层的对象传递，将服务层要传递给控制层的数据封装为对象。DTO
  */
 package com.bsg.horus.dto;

@@ -1,4 +1,4 @@
-package com.bsg.horus.model;
+package com.bsg.horus.dto;
 
 public class JsonValue {
 	/**@author  zhangdelei

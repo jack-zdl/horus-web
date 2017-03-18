@@ -1,26 +1,17 @@
 package com.bsg.horus.controller;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.bsg.horus.dao.DaoImpl;
 import com.bsg.horus.service.MachineServiceImpl;
-import com.bsg.horus.service.NetworkServiceImpl;
 /**
  * @author  zhangdelei
  * @data 2016年7月26日下午10:27:02
@@ -36,8 +27,8 @@ public class MachineController {
 	 */
 	@Resource(name="service_machine")
 	private MachineServiceImpl service_machine;
+	//private static Log log = LogFactory.getLog(MachineController.class);
 	
-	private static Log log = LogFactory.getLog(Controller_machine.class);
 	 @RequestMapping(value = "/machine/queryMachines",method=RequestMethod.POST)
 	 @ResponseBody
 	    public JSONArray queryMachines() {
@@ -48,14 +39,14 @@ public class MachineController {
 	        try{
 	        	//引入service层
 	        	result=service_machine.getJqueryMachine(url);
-	        	log.info("进入了Machine的Controller");
-	        	log.info("查询主机==result==="+result);
+//	        	log.info("进入了Machine的Controller");
+//	        	log.info("查询主机==result==="+result);
 	        	array=result.getJSONArray("data");
-	        	log.info("数组结果="+array);
+//	        	log.info("数组结果="+array);
 	            map.put("data",result);
 	        }catch (Exception e){
 	            e.printStackTrace();
-	            log.error("物理机查询失败，异常为:",e);
+	           // log.error("物理机查询失败，异常为:",e);
 	            map.put("result",-1);
 	        }
 	        return array;
@@ -68,11 +59,11 @@ public class MachineController {
 		 JSONArray array=new JSONArray();
 		 try{
 			 result=service_machine.getJqueryServices(url);
-			 log.info("查询Service实例服务==result==="+result);
+			// log.info("查询Service实例服务==result==="+result);
 			 array=result.getJSONArray("data");
 		 }catch(Exception e){
 			 e.printStackTrace();
-	         log.error("物理机查询失败，异常为:",e);
+	       //  log.error("物理机查询失败，异常为:",e);
 		 }
 		 return array;
 	 }
