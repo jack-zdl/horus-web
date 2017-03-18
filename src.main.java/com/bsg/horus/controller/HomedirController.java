@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.bsg.horus.service.ServiceImpl_homedir;
+import com.bsg.horus.service.HomedirServiceImpl;
 /**@author  zhangdelei
  * @data 2016年6月30日下午2:15:59
  *@Description 这是获得home目录使用率的Controller
  */
 @Controller
-@RequestMapping("/homedir")
-public class Controller_homedir {
+@RequestMapping("/v1.0/homedir")
+public class HomedirController {
 	/**@author  zhangdelei
 	 * @data 2016年6月30日下午2:15:59
 	 *@Description TODO
 	 */
 	@Resource(name="service_homedir")
-	private ServiceImpl_homedir service_homedir;
+	private HomedirServiceImpl service_homedir;
 	
 	@RequestMapping(value = "/Day.do")
     @ResponseBody

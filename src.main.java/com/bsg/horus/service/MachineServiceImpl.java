@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.bsg.horus.dao.DaoImpl;
 @Service("service_machine")
-public class ServiceImpl_machine {
+public class MachineServiceImpl {
 	/**@author  zhangdelei
 	 * @data 2016年7月27日下午5:49:35
 	 *@Description 这里是查询物理机(查询主机)的service层  负责逻辑处理

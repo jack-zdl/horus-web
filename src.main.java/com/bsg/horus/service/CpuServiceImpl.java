@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bsg.horus.dao.DaoImpl;
-import com.bsg.horus.util.DataHandel;
+import com.bsg.horus.util.DataHandelUtil;
 import com.bsg.horus.util.DateUtil;
 
 @Service("serviceImpl")
-public class ServiceImpl_cpu {
+public class CpuServiceImpl {
 
 	@Resource(name="daoImpl")
 	private  DaoImpl daoImpl;
 	
 	@Resource(name="dataHandel")
-	private  DataHandel dataHandel;
+	private  DataHandelUtil dataHandel;
 	/**
 	 * @author  zhangdelei
 	 * @data 2016年7月4日上午11:02:48

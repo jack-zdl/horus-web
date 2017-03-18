@@ -20,7 +20,7 @@ import com.bsg.horus.util.DateUtil;
  *@Description 这是用来做流量管理的service层
  */
 @Service("service_network")
-public class ServiceImpl_network {
+public class NetworkServiceImpl {
 	@Resource(name="daoImpl")
 	private  DaoImpl daoImpl;
 	/**@author  zhangdelei

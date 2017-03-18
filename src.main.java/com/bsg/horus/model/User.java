@@ -6,10 +6,19 @@ package com.bsg.horus.model;
  */
 
 public class User {
+	private static final long serialVersionUID = 1530127413381718585L;
+	private int ID;
 	private String username;
 	private String name;
 	private String password;
 	private String email;
+	
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -41,7 +50,9 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", name=" + name + ", password=" + password + ", email=" + email + "]";
+		return "User [ID=" + ID + ", username=" + username + ", name=" + name + ", password=" + password + ", email="
+				+ email + "]";
 	}
+	
 	
 }

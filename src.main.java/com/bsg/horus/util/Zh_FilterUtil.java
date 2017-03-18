@@ -10,10 +10,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 /**
  * @author zhangdelei@bsgchina.com
- * @data 2016Äê6ÔÂ14ÈÕÏÂÎç1:31:48
- * @Descriptiion ÕâÀïÊÇÒ»¸öÖĞÎÄ¹ıÂËÆ÷£¬¹ıÂËÒ³ÃæµÄÂÒÂëÎÊÌâ
+ * @data 2016ï¿½ï¿½6ï¿½ï¿½14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1:31:48
+ * @Descriptiion ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
-public class Zh_Filter implements Filter{
+public class Zh_FilterUtil implements Filter{
 	public void destroy(){
 		//TOO Auto-generated method stub
 	}

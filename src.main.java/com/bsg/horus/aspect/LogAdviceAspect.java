@@ -1,4 +1,4 @@
-package com.bsg.horus.util;
+package com.bsg.horus.aspect;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
 import com.bsg.horus.dao.DaoImpl;
 @Component("Log")
  @Aspect
-public class LogAdvice {
+public class LogAdviceAspect {
 	
-	private static Log log = LogFactory.getLog(LogAdvice.class);
+	private static Log log = LogFactory.getLog(LogAdviceAspect.class);
 	/**
 	 * @author  zhangdelei
 	 * @data 2016年7月21日下午4:13:22

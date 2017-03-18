@@ -12,7 +12,7 @@ import com.bsg.horus.util.DateUtil;
  *@Description 这是root目录使用率service层
  */
 @Service("service_rootdir_Impl")
-public class ServiceImpl_rootdir {
+public class RootdirServiceImpl {
 	@Resource(name="daoImpl")
 	private  DaoImpl daoImpl;
 /**

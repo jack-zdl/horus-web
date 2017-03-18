@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
-import com.bsg.horus.service.ServiceImpl_mem;
+import com.bsg.horus.service.MemServiceImpl;
 /**
  * @author  zhangdelei
  * @data 2016年6月21日下午3:55:59
  *@Description TODO
  */
 @Controller
-@RequestMapping("/mem")
-public class Controller_mem {
+@RequestMapping("/v1.0/mem")
+public class MemController {
 	@Resource(name="memServiceImpl")
-	private ServiceImpl_mem memServiceImpl;
+	private MemServiceImpl memServiceImpl;
 	
 	@RequestMapping(value = "/Day.do")
     @ResponseBody

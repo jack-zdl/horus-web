@@ -7,18 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
-import com.bsg.horus.service.ServiceImpl_network;
+import com.bsg.horus.service.NetworkServiceImpl;
 /**@author  zhangdelei
  * @data 2016年6月30日下午4:25:29
  *@Description 这是用来获得流量的使用率——Controller
  */
 
 @Controller
-@RequestMapping("/network")
-public class Controller_network {
+@RequestMapping("/v1.0/network")
+public class NetworkController {
 	
 	@Resource(name="service_network")
-	private ServiceImpl_network service_network;
+	private NetworkServiceImpl service_network;
 	/**@author  zhangdelei
 	 * @data 2016年6月30日下午4:25:29
 	 *@Description 每天的使用情况

@@ -19,23 +19,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bsg.horus.dao.DaoImpl;
-import com.bsg.horus.service.ServiceImpl_machine;
-import com.bsg.horus.service.ServiceImpl_network;
+import com.bsg.horus.service.MachineServiceImpl;
+import com.bsg.horus.service.NetworkServiceImpl;
 /**
  * @author  zhangdelei
  * @data 2016年7月26日下午10:27:02
  *@Description TODO
  */
 @Controller
-@RequestMapping("/horus")
-public class Controller_machine {
+@RequestMapping("/v1.0/horus")
+public class MachineController {
 	/**@author  zhangdelei
 	 * @data 2016年7月26日下午9:59:33
 	 *@Description 这个Logger跟我之前的logger不一样，之前是org.apache.commons.logging.Log;现在不是，但是应该受伤一样的用法
 	 *？？？
 	 */
 	@Resource(name="service_machine")
-	private ServiceImpl_machine service_machine;
+	private MachineServiceImpl service_machine;
 	
 	private static Log log = LogFactory.getLog(Controller_machine.class);
 	 @RequestMapping(value = "/machine/queryMachines",method=RequestMethod.POST)

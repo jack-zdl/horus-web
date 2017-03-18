@@ -9,7 +9,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 @Component("dataHandel")
-public class DataHandel {
+public class DataHandelUtil {
 	/**@author  zhangdelei
 	 * @data 2016年7月13日下午4:43:49
 	 *@Description 这是专门来做数据处理的-一般的数据处理使没有值得时间戳的值设为null，这样就可以在前端显示断点

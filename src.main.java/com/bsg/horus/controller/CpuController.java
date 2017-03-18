@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
-import com.bsg.horus.service.ServiceImpl_cpu;
+import com.bsg.horus.service.CpuServiceImpl;
 /**
  * @author  zhangdelei
  * @data 2016骞�6鏈�21鏃ヤ笅鍗�3:55:59
  *@Description TODO
  */
 @Controller
-@RequestMapping("/cpu")
-public class Controller_cpu {
+@RequestMapping("/v1.0/cpu")
+public class CpuController {
 	@Resource(name="serviceImpl")
-	private ServiceImpl_cpu serviceImpl;
+	private CpuServiceImpl serviceImpl;
 	
 	@RequestMapping(value = "/Day.do")
     @ResponseBody

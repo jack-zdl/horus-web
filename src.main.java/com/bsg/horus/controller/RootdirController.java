@@ -7,16 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
-import com.bsg.horus.service.ServiceImpl_rootdir;
+import com.bsg.horus.service.RootdirServiceImpl;
 /**@author  zhangdelei
  * @data 2016年6月30日下午1:39:08
  *@Description 这是root目录使用率检测的Controller层
  */
 @Controller
-@RequestMapping("/rootdir")
-public class Controller_rootdir {
+@RequestMapping("/v1.0/rootdir")
+public class RootdirController {
 	@Resource(name="service_rootdir_Impl")
-	private  ServiceImpl_rootdir  service_rootdir_Impl;
+	private  RootdirServiceImpl  service_rootdir_Impl;
 /**
  * @author  zhangdelei
  * @data 2016年6月30日下午2:13:45

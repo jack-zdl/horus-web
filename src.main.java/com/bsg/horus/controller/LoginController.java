@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/user")
-public class Controller1 {
+@RequestMapping("/v1.0/users")
+public class LoginController {
 	/**@author  zhangdelei
 	 * @throws IOException 
 	 * @data 2016年6月21日下午4:04:15
