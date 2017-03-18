@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!--
+		 配置扫描包的配置
+	 	resource-pattern="某些子包/*.class" 只扫描某些包，这个某些包在base-package下的子包
+	 	<context:component-scan base-package="com.bsg.horus.dao"
+	resource-pattern="">
+	</context:component-scan>
+	 -->
+	 
+	 <!--  使用注解类型来区分
+	 	 可以通过context:exclude-filter 来过(排除)滤掉某些annotation的类型比如(Repository)org.springframework.stereotype.Repository
+	 	 <context:component-scan base-package="com.bsg.horus.dao">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	  -->
+	<!-- 使用注解类型来区分
+		也可以用只包含 context:include-filter
+		必须设置use-default-filters="false" 不使用默认的
+		 <context:component-scan base-package="com.bsg.horus.dao"
+	 use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	 -->
+	 
+	 <!-- 使用类名来区分
+	 		<context:exclude-filter type="assignable" expression="com.bsg.horus.dao.TestController"/>
+	 		<context:component-scan base-package="com.bsg.horus.dao">
+		<context:exclude-filter type="assignable" expression="com.bsg.horus.dao.TestController"/>
+	</context:component-scan>
+	   -->
+	   <!-- 
+	   		只要你想用context:include-filter 就必须设置必须设置use-default-filters="false"
+	   		   <context:component-scan base-package="com.bsg.horus.dao"
+	   use-default-filters="false">
+		<context:include-filter type="assignable" expression="com.bsg.horus.dao.HttpClientDaoImpl"/>
+	</context:component-scan>
+	    -->
+		<context:component-scan base-package="com.bsg.horus.dao">
+		
+		</context:component-scan>
+	
+	
+</beans>
