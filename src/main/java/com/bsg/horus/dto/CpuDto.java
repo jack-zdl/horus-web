@@ -6,7 +6,7 @@ zhangdelei@bsgchina.com2016��6��14������11:07:48
 
 */
 
-public class CpuEntity {
+public class CpuDto {
  
    private int  timestamp;
    private int value;
@@ -22,7 +22,7 @@ public int getValue() {
 public void setValue(int value) {
 	this.value = value;
 }
-public CpuEntity() {
+public CpuDto() {
 	super();
 	// TODO Auto-generated constructor stub
 }

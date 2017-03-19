@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+<!-- 
+	配置bean
+	建议 id=类名首字母小写
+	name=类中的属性 
+	value=setHello=赋值
+	class="Bean的全类名"*通过反射机制 。 必须保证类中的有无参构造函数
+	id:标示容器中的bean，id在IOC容器中必须唯一，若id没有指定，spring自动授权类名作为bean的名称 也可以有多个名字
+	通过set方法依赖注入
+ -->
+	<bean id="helloWord" class="com.zhang.spring.entity.HelloWord">
+		<property name="hello" value="spring"></property>
+	</bean>
+	<!--
+		  通过构造函数依赖注入 
+		constructor arg   
+		是无序的，一般是按照构造函数的形参顺序 也可以index属性指定顺序
+		也可以用type来指定类型    解决问题解决区分重载的构造函数
+		使用value子节点
+	-->
+	<bean id="car" class="com.zhang.spring.entity.Car">
+	<!-- 
+		<constructor-arg value="newvar" index="0" type="java.lang.String"></constructor-arg>
+	 -->
+		<constructor-arg index="0" type="java.lang.String">
+			<value>  <![CDATA[<newCar>]]></value>
+		</constructor-arg>
+		<constructor-arg value="1" type="Double"></constructor-arg>
+	</bean>
+	
+	<!-- 
+		解决bean之间的关系，如何设置处理
+		类之间1对1 ref=bean的"id"
+		2 <ref bean="car">
+		也可以写一个内部bean
+	 -->
+	 <bean id="person" class="com.zhang.spring.entity.Person">
+	 	<property name="name" value="名字"></property>
+	 	<property name="age" value="11"></property>
+	 	<!-- 
+	 		<property name="car" ref="car"></property>
+	 	 -->
+	 	 <!-- 内部bean，不能被外部使用 
+	 	 <property name="car">
+	 	 	<bean  class="com.zhang.spring.entity.Car">
+	 	 		<constructor-arg value="mingzi"></constructor-arg>
+	 	 		<constructor-arg value="2"></constructor-arg>
+	 	 	</bean>
+	 	 </property>
+	 	  -->
+	 	  <!-- 测试赋值null -->
+	 	  <property name="car" ref="car"></property>
+	 </bean>
+	 <bean id="person2" class="com.zhang.spring.entity.Person">
+	 	<constructor-arg value="wo"></constructor-arg>
+	 	<constructor-arg value="22"></constructor-arg>
+	 	<!-- 
+	 	<constructor-arg ref="car"></constructor-arg>
+	 	 -->
+	 	 <!-- 为属性值设为null
+	 	 <constructor-arg><null/></constructor-arg>
+	 	  -->
+	 	  <constructor-arg ref="car"></constructor-arg>
+	 	  <!-- 为级联属性赋值  属性需要先初始化才可以为级联属性赋值 -->
+	 	  <property name="car.size" value="2"></property>
+	 </bean>
+	 <!-- 
+	 	测试配置集合属性
+	  -->
+	  <bean id="car2" class="com.zhang.spring.entity.Car">
+	  	<constructor-arg value="car2"></constructor-arg>
+	  	<constructor-arg value="1"></constructor-arg>
+	  </bean>
+	  <bean id="persons" class="com.zhang.spring.entity.Persons">
+	  	<property name="name" value="mingzi"></property>
+	  	<property name="age" value="11"></property>
+	  	<property name="cars">
+	  		<list>
+	  			<ref bean="car"/>
+	  			<ref bean="car2"/>
+	  			<bean  class="com.zhang.spring.entity.Car">
+	 	 		<constructor-arg value="mingzi"></constructor-arg>
+	 	 		<constructor-arg value="2"></constructor-arg>
+	 	 	</bean>
+	  		</list>
+	  	</property>
+	  </bean>
+	 
+	 <!-- 测试map属性 -->
+	 <bean id="psersonsMap" class="com.zhang.spring.entity.PersonsMap">
+	 	<property name="name" value="zhang"></property>
+	 	<property name="age" value="11"></property>
+	 	<property name="cars">
+	 		<map>
+	 			<entry key="AA" value-ref="car"></entry>
+	 			<entry key="BB" value-ref="car2"></entry>
+	 		</map>
+	 	</property>
+	 </bean>
+	 
+	 <!-- 配置properties属性值   数据库连接-->
+	 <bean id="dataSource" class="com.zhang.spring.entity.DataSource">
+	 	<property name="properties">
+	 		<props>
+	 			<prop key="user">root</prop>
+	 			<prop key="password">1234</prop>
+	 			<prop key="jdbcUrl">jdbc:mysql///test</prop>
+	 			<prop key="driverClass">com.mysql.jdbc.Driver</prop>
+	 		</props>
+	 	</property>
+	 </bean>
+	 
+	
+</beans>

@@ -5,7 +5,7 @@ package com.bsg.horus.dto;
  * @Descriptiion TODO
  */
 
-public class UserEntity {
+public class UserDto {
 	private static final long serialVersionUID = 1530127413381718585L;
 	private int ID;
 	private String username;
@@ -44,7 +44,7 @@ public class UserEntity {
 		this.email = email;
 	}
 	
-	public UserEntity() {
+	public UserDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -1,4 +1,4 @@
-package com.bsg.horus.aspect;
+package test.aop;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;

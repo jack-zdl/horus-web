@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 配置目标bean -->
+	<bean id="testAopService" class="com.bsg.horus.service.TestAopService"></bean>
+	<!-- 配置aop的登录切面编程 -->
+	<bean id="loginAspect" class="com.bsg.horus.aspect.LoginAspect"></bean>
+	<!-- 配置aop的验证切面编程 -->
+	<bean id="validationAspect" class="com.bsg.horus.aspect.ValidationAspect"></bean>
+	<!-- 配置AOP -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.bsg.horus.aspect.LoginAspect.*(..))" id="pointcut"/>
+		<!-- method="beforeMethod"是类中的方法 -->
+		<aop:aspect ref="loginAspect" order="2">
+			<!-- 
+			<aop:before method="beforeMethod" pointcut-ref="pointcut"/>
+			<aop:after-throwing method="afterThrowingMethod" pointcut-ref="pointcut" throwing="ex"/>
+			<aop:after-returning method="afterReturningMethod" pointcut-ref="pointcut" returning="result"/>
+			 <aop:around method="aroundMethod" pointcut-ref="pointcut"/>
+			 -->
+			
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

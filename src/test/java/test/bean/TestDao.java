@@ -1,4 +1,4 @@
-package com.bsg.horus.dao;
+package test.bean;
 
 import org.springframework.stereotype.Repository;
 

@@ -10,6 +10,9 @@
 	<properties>
 		<spring.version>3.0.2.RELEASE</spring.version>
 		<springmvc.version>4.3.6.RELEASE</springmvc.version>
+		<springaop.version>1.8.10</springaop.version>
+		<aopalliance.version>1.0</aopalliance.version>
+		<mysql.version>5.1.38</mysql.version>
 		<httpclient.version>4.5.2</httpclient.version>
 		<fastjson.version>1.2.4</fastjson.version>
 		<junit.version>4.12-beta-3</junit.version>
@@ -43,6 +46,53 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${springmvc.version}</version>
 		</dependency>
+		<!-- 
+			aop 所依赖的jar                       spring-aspects 依赖aspectjweaver
+				aspectjrt
+				aspectjweaver	
+				aopalliance
+				spring-aop
+				这四个jar支撑aop开发
+		 -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-aspects</artifactId>
+    		<version>${springmvc.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>aopalliance</groupId>
+    		<artifactId>aopalliance</artifactId>
+    		<version>${aopalliance.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjrt</artifactId>
+		    <version>${springaop.version}</version>
+		</dependency>
+		<!-- 
+			建立jdbc模板需要jar
+				c3p0jar
+				mysql-connector-java.jar
+		 -->
+		 <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+		<dependency>
+    		<groupId>com.mchange</groupId>
+    		<artifactId>c3p0</artifactId>
+    		<version>0.9.5.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${mysql.version}</version>
+		</dependency>
+		
+		 
+		 
+		
+
+		
+		
 		<!-- 最新的httpclient方法 -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -67,6 +117,7 @@
 			<version>${junit.version}</version>
 		</dependency>
 	</dependencies>
+	
 	
 	<build>
 		<plugins>
