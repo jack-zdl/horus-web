@@ -3,6 +3,8 @@ package test.bean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bsg.horus.dao.HttpClientDaoImpl;
+
 @Service("testService")
 public class TestService {
 	/**@author  zhangdelei

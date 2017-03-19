@@ -8,7 +8,6 @@
 	<name>horus</name>
 	<description />
 	<properties>
-		<spring.version>3.0.2.RELEASE</spring.version>
 		<springmvc.version>4.3.6.RELEASE</springmvc.version>
 		<springaop.version>1.8.10</springaop.version>
 		<aopalliance.version>1.0</aopalliance.version>
@@ -69,6 +68,19 @@
 		    <artifactId>aspectjrt</artifactId>
 		    <version>${springaop.version}</version>
 		</dependency>
+		
+		<!--
+			 spring jdbc相关的依赖
+			 		使用spring-orm    spring-tx     spring-jdbc
+		 -->
+		 <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-orm</artifactId>
+    		<version>${springmvc.version}</version>
+		</dependency>
+		 
+		
 		<!-- 
 			建立jdbc模板需要jar
 				c3p0jar

@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.bsg.horus.service.TestAopService;
 
 /**@author  zhangdelei
  * @data 2017年3月19日上午10:15:37

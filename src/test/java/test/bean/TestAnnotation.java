@@ -6,9 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bsg.horus.controller.CpuController;
 import com.bsg.horus.dao.HttpClientDaoImpl;
-import com.bsg.horus.dao.TestComponent;
-import com.bsg.horus.dao.TestController;
-import com.bsg.horus.dao.TestService;
+
 import com.bsg.horus.service.CpuServiceImpl;
 
 public class TestAnnotation {
