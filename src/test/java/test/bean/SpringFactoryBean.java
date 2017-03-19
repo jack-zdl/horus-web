@@ -1,10 +1,10 @@
-package com.bsg.horus.util;
+package test.bean;
 
 import org.springframework.beans.factory.FactoryBean;
 
-import com.bsg.horus.entity.SpringPerson;
+import com.bsg.horus.entity.SpringPersonEntity;
 
-public class SpringFactoryBean implements FactoryBean<SpringPerson> {
+public class SpringFactoryBean implements FactoryBean<SpringPersonEntity> {
 	
 	private String name;
 	
@@ -13,16 +13,16 @@ public class SpringFactoryBean implements FactoryBean<SpringPerson> {
 	}
 	//返回一个bean对象
 	@Override
-	public SpringPerson getObject() throws Exception {
+	public SpringPersonEntity getObject() throws Exception {
 		// TODO Auto-generated method stub
-		return new SpringPerson(name);
+		return new SpringPersonEntity(name);
 	}
 
 	//返回bean的类型
 	@Override
 	public Class<?> getObjectType() {
 		// TODO Auto-generated method stub
-		return SpringPerson.class;//反射
+		return SpringPersonEntity.class;//反射
 	}
 
 	@Override

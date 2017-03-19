@@ -1,4 +1,4 @@
-package com.bsg.horus.service;
+package test.aop;
 
 import org.springframework.stereotype.Component;
 

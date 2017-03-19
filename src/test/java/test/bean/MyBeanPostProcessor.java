@@ -2,7 +2,7 @@
  * @data 2017年3月18日下午4:58:52
  *@Description TODO
  */
-package com.bsg.horus.util;
+package test.bean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

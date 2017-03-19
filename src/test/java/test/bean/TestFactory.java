@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.bsg.horus.entity.SpringPerson;
+import com.bsg.horus.entity.SpringPersonEntity;
 
 public class TestFactory {
 	/**@author  zhangdelei
@@ -14,7 +14,7 @@ public class TestFactory {
 	@Test
 	public void testStaticFactory(){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans-factory.xml");
-		SpringPerson person = (SpringPerson) ctx.getBean("person");
+		SpringPersonEntity person = (SpringPersonEntity) ctx.getBean("person");
 		System.out.println(person);
 	}
 	/**
@@ -25,7 +25,7 @@ public class TestFactory {
 	@Test
 	public void testInstanceFactory(){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans-factory.xml");
-		SpringPerson person1 = (SpringPerson) ctx.getBean("person1");
+		SpringPersonEntity person1 = (SpringPersonEntity) ctx.getBean("person1");
 		System.out.println(person1);
 	}
 	/**
@@ -36,7 +36,7 @@ public class TestFactory {
 	@Test
 	public void testFactoryBean(){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans-factoryBean.xml");
-		SpringPerson person1 = (SpringPerson) ctx.getBean("person");
+		SpringPersonEntity person1 = (SpringPersonEntity) ctx.getBean("person");
 		System.out.println(person1);
 	}
 }

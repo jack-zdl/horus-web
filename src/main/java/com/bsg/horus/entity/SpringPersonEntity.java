@@ -3,7 +3,7 @@ package com.bsg.horus.entity;
  * @data 2017年3月18日下午4:52:43
  *@Description 测试spring的初始化方法和销毁方法
  */
-public class SpringPerson {
+public class SpringPersonEntity {
 	
 	/**
 	 * @description 名字
@@ -24,12 +24,12 @@ public class SpringPerson {
 		this.name = name;
 	}
 
-	public SpringPerson(String name) {
+	public SpringPersonEntity(String name) {
 		super();
 		this.name = name;
 	}
 
-	public SpringPerson() {
+	public SpringPersonEntity() {
 		//super();  不写的话直接默认有这个super
 		System.out.println("springperson的构造函数constructer。。。");
 		// TODO Auto-generated constructor stub
