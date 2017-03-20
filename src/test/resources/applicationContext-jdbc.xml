@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- 导入资源文件 jdbc。properties-->
 	<context:property-placeholder location="jdbc.properties"/>
@@ -19,12 +21,22 @@
 			<property name="password" value="${jdbc.password}"></property>
 			
 			<property name="initialPoolSize" value="${jdbc.pool.init}"></property>
-			<property name="maxPoolSize" value="${jdbc.pool.minIdle}"></property>
+			<property name="maxPoolSize" value="10"></property>
 	</bean>
 	
 	<!--  配置spring的jdbc	Template -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
+	<!-- 
+		配置事物管理器
+		管理数据源
+	 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 启动事物注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 </beans>

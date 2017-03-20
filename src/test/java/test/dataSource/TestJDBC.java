@@ -17,13 +17,29 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class TestJDBC {
 	
-	private static ApplicationContext ctx = null;
-	private static JdbcTemplate jdbcTemplate;
+	private  ApplicationContext ctx = null;
+	private  JdbcTemplate jdbcTemplate;
 	
-	static{
-		ctx = new ClassPathXmlApplicationContext("classpath:applicationContext-jdbc.xml");
+	{
+		ctx = new ClassPathXmlApplicationContext("classpath:applicationContext-jdbc1.xml");
 		jdbcTemplate = (JdbcTemplate) ctx.getBean("jdbcTemplate");
 	}
+	/**
+	 * @author  zhangdelei
+	 * @data 2017年3月19日下午8:09:08
+	 *@Description 测试更新  执行INSERT UPDATE DELETE
+	 */
+	@Test
+	public void testUpdate(){
+		String sql = "UPDATE  tbl_user SET money = ? WHERE id = ?";
+		jdbcTemplate.update(sql, "160", "1");
+	}
+	
+	/**
+	 * @author  zhangdelei
+	 * @data 2017年3月19日下午8:14:08
+	 *@Description 测试spring jdbc连接是否成功
+	 */
 	
 	@Test
 	 public void testDataSource() throws SQLException{

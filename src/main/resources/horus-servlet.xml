@@ -10,23 +10,23 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"  >
 
-		<!-- 扫描包   实现IOC -->
+		<!-- 扫描包   实现IOC
        	<context:component-scan base-package="com.*" /> 
-       	
+       	 -->
        	<!--
       		 开始aop注解 让 AspectJ注解起作用
       	 	自动为匹配的类生成代理对象
-      	 -->
+      	
    		<aop:aspectj-autoproxy />
-       	
-	    <!-- springmvc注解驱动    -->
+       	 -->
+	    <!-- springmvc注解驱动  
 	   	<mvc:annotation-driven  />
-      
+        -->
       <!--1 打开Spring的Annotation支持 开启注解处理器   <context:annotation-config/>-->
-      <!-- 开启AOP日志  所必须使用的配置-自动去查找AOP     -->
+      <!-- 开启AOP日志  所必须使用的配置-自动去查找AOP   
       		   <context:annotation-config/>
       		     <aop:aspectj-autoproxy />
-    
+      -->
    
     
       

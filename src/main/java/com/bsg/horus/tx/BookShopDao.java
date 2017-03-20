@@ -1,4 +1,4 @@
-package test.tx;
+package com.bsg.horus.tx;
 
 public interface BookShopDao {
 	
