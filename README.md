@@ -1,9 +1,9 @@
 # horus-web
 这是持续开发的独立的horus监控系统，无状态的javaweb工程，使用spring,springmvc后端框架，SmartAdmin的前端框架。spring的技术如下 IOC容器DI依赖注入 AOP切面编程，事物管理，及SpringMVC技术。
 ## 1springIOC技术知识
-		### 1.1springBean的生命周期
-		### 1.2springBean的xml配置方法
-		### 1.3springBean的注解配制方法
+### 1.1springBean的生命周期
+### 1.2springBean的xml配置方法
+### 1.3springBean的注解配制方法
 ## 2springAOP的技术知识
 		### 2.1springAOP的生命周期
 		### 2.2springAOP的xml配置方法
