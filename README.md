@@ -13,6 +13,6 @@
 			在使用jdbcTemplate,mybatis,hiberanteJPA时都是可以一样使用的。
 		3.2spring事物管理的传播行为--当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。
 ## 	3springMVC的技术知识
-### 	3.1springMVC相关使用
-			3.1.1情景 spring与springMVC同时使用时，在spring中配置声明式事务情况下，是否对springMVC管理的控制层生效
+ 	3.1springMVC相关使用
+			情景: spring与springMVC同时使用时，在spring中配置声明式事务情况下，是否对springMVC管理的控制层生效
 	3.2springMVC url请求转入后的处理流程
