@@ -9,7 +9,9 @@
  	2.2springAOP的xml配置方法
  	2.3springAOP的注解配制方法
 ##	3spring的事物管理
- 	3.1转账问题（原子性，隔离性，持久性）
+		3.1转账问题（原子性，隔离性，持久性,一致性）
+			在使用jdbcTemplate,mybatis,hiberanteJPA时都是可以一样使用的。
+		3.2spring事物管理的传播行为--当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。
 ## 	3springMVC的技术知识
 ### 	3.1springMVC相关使用
 			3.1.1情景 spring与springMVC同时使用时，在spring中配置声明式事务情况下，是否对springMVC管理的控制层生效
