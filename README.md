@@ -27,7 +27,8 @@
 			<property name="queueCapacity" value="25" />
 			<!-- 线程池维护线程所允许的空闲时间 -->
 			<property name="keepAliveSeconds" value="300" />
-			<!-- 线程池对拒绝任务(无线程可用)的处理策略 ThreadPoolExecutor.CallerRunsPolicy策略 ,调用者的线程会执行该任务,如果执行器已关闭,则丢弃. -->
+			<!-- 线程池对拒绝任务(无线程可用)的处理策略 ThreadPoolExecutor.CallerRunsPolicy策略,
+			调用者的线程会执行该任务,如果执行器已关闭,则丢弃. -->
 			<property name="rejectedExecutionHandler">
 				<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
 			</property>
