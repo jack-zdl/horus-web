@@ -16,3 +16,19 @@
  	3.1springMVC相关使用
 			情景: spring与springMVC同时使用时，在spring中配置声明式事务情况下，是否对springMVC管理的控制层生效
 	3.2springMVC url请求转入后的处理流程
+##  4spring的线程池
+		4.1spring的线程池配置
+			<bean id="threadPool" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+			<!-- 核心线程数 -->
+			<property name="corePoolSize" value="3" />
+			<!-- 最大线程数 -->
+			<property name="maxPoolSize" value="10" />
+			<!-- 队列最大长度 >=mainExecutor.maxSize -->
+			<property name="queueCapacity" value="25" />
+			<!-- 线程池维护线程所允许的空闲时间 -->
+			<property name="keepAliveSeconds" value="300" />
+			<!-- 线程池对拒绝任务(无线程可用)的处理策略 ThreadPoolExecutor.CallerRunsPolicy策略 ,调用者的线程会执行该任务,如果执行器已关闭,则丢弃. -->
+			<property name="rejectedExecutionHandler">
+				<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+			</property>
+		</bean>
