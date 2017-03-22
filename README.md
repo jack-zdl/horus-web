@@ -1,18 +1,46 @@
 # horus-web
 这是持续开发的独立的horus监控系统，无状态的javaweb工程，使用spring,springmvc后端框架，SmartAdmin的前端框架。spring的技术如下 IOC容器DI依赖注入 AOP切面编程，事物管理，及SpringMVC技术。
+
 ##  1springIOC技术知识
-		1.1springBean的生命周期
-		1.2springBean的xml配置方法
-		1.3springBean的注解配制方法
+
+>		1.1springBean的生命周期
+
+```
+			Spring对Bean进行实例化（相当于程序中的new Xx()）
+
+			Spring将值和Bean的引用注入进Bean对应的属性中
+
+			如果Bean实现了BeanNameAware接口，Spring将Bean的ID传递给setBeanName()方法（实现BeanNameAware清主要是为了通过Bean的引用来获得Bean的ID，一般业务中是很少有用到Bean的ID的）
+			
+			如果Bean实现了BeanFactoryAware接口，Spring将调用setBeanDactory(BeanFactory bf)方法并把BeanFactory容器实例作为参数传入。（实现BeanFactoryAware     		主要目的是为了获取Spring容器，如Bean通过Spring容器发布事件等）
+
+			如果Bean实现了ApplicationContextAwaer接口，Spring容器将调用setApplicationContext(ApplicationContext ctx)方法，把y应用上下文作为参数传入.(作用与BeanFactory类似都是为了获取Spring容器，不同的是Spring容器在调用setApplicationContext方法时会把它自己作为setApplicationContext 的参数传入，而Spring容器在调用setBeanDactory前需要程序员自己指定（注入）setBeanDactory里的参数BeanFactory )
+			如果Bean实现了BeanPostProcess接口，Spring将调用它们的postProcessBeforeInitialization（预初始化）方法（作用是在Bean实例创建成功后对进行增强处理，如对Bean进行修改，增加某个功能）
+			如果Bean实现了InitializingBean接口，Spring将调用它们的afterPropertiesSet方法，作用与在配置文件中对Bean使用init-method声明初始化的作用一样，都是在Bean的全部属性设置成功后执行的初始化方法。
+			如果Bean实现了BeanPostProcess接口，Spring将调用它们的postProcessAfterInitialization（后初始化）方法（作用与6的一样，只不过6是在Bean初始化前执行的，而这个是在Bean初始化后执行的，时机不同 )
+			经过以上的工作后，Bean将一直驻留在应用上下文中给应用使用，直到应用上下文被销毁
+			
+			如果Bean实现了DispostbleBean接口，Spring将调用它的destory方法，作用与在配置文件中对Bean使用destory-method属性的作用一样，都是在Bean实例销毁前执行的方法。
+```			
+
+>		1.2springBean的xml配置方法
+
+>		1.3springBean的注解配制方法
+
 ##  2springAOP的技术知识
-		2.1springAOP的生命周期
-		2.2springAOP的xml配置方法
-		2.3springAOP的注解配制方法
+
+>		2.1springAOP的生命周期
+
+>		2.2springAOP的xml配置方法
+
+>		2.3springAOP的注解配制方法
 ##	3spring的事物管理
 		3.1转账问题（原子性，隔离性，持久性,一致性）
 			在使用jdbcTemplate,mybatis,hiberanteJPA时都是可以一样使用的。
 		3.2spring事物管理的传播行为--当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。
 ## 	3springMVC的技术知识
+		3.1springMVC的生命周期及请求发送流程
+			
 		3.1springMVC相关使用
 			情景: spring与springMVC同时使用时，在spring中配置声明式事务情况下，是否对springMVC管理的控制层生效
 		3.2springMVC url请求转入后的处理流程
