@@ -118,7 +118,7 @@ public class LoginAspect {
 		try {
 			//前置通知
 			System.out.println("前置通知:"+methodName+"begins with "+Arrays.asList(joinPoint.getArgs()));
-			//执行目标方法
+			//继续执行目标方法
 			result = joinPoint.proceed();
 			//返回通知
 			System.out.println("返回通知："+result);

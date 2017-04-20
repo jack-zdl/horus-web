@@ -38,6 +38,15 @@
 
 >		1.3springBean的注解配制方法
 
+```
+			1.3.1@Autowired默认按类型分配，属于spring的注解方式，默认情况下要求依赖对象必须存在，如果允许null，必须@Autowired(required=false)
+				如果你想使用名称装配@Autowired() @Qualifier("baseDao")
+			1.3.2@Resource是jdk1.6支持的注解，默认按照名称进行装配。如果没有指定name属性，当注解写在字段上时，默认取字段名，按照名称查找，
+				如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进行装配。
+				但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配
+				<context:annotation-config/>
+```
+
 ##  2springAOP的技术知识
 
 >		2.1springAOP的生命周期
@@ -45,10 +54,54 @@
 >		2.2springAOP的xml配置方法
 
 >		2.3springAOP的注解配制方法
+```
+		1使用around方法后，before等其他切面方法不可以使用了。只有around可以继续执行目标的方法
+```
 ##	3spring的事物管理
 		3.1转账问题（原子性，隔离性，持久性,一致性）
 			在使用jdbcTemplate,mybatis,hiberanteJPA时都是可以一样使用的。
+			Spring默认情况下会对运行期例外(RunTimeException)进行事务回滚。这个例外是unchecked
+```
+			1 让checked例外也回滚：在整个方法前加上 @Transactional(rollbackFor=Exception.class) 
+			2 让unchecked例外不回滚： @Transactional(notRollbackFor=RunTimeException.class)
+			3 不需要事务管理的(只查询的)方法：@Transactional(propagation=Propagation.NOT_SUPPORTED)
+			4在整个方法运行前就不会开启事务还可以加上：@Transactional(propagation=Propagation.NOT_SUPPORTED,readOnly=true)
+				这样就做成一个只读事务，可以提高效率。
+```
 		3.2spring事物管理的传播行为--当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。
+		 	所谓事务的传播行为是指，如果在开始当前事务之前，一个事务上下文已经存在，此时有若干选项可以指定一个事务性方法的执行行为。
+```
+			详细的相关连接 http://blog.csdn.net/it_wangxiangpan/article/details/24180085
+			TransactionDefinition.PROPAGATION_REQUIRED：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。 这个是最常见的传播行为
+			TransactionDefinition.PROPAGATION_REQUIRES_NEW：创建一个新的事务，如果当前存在事务，则把当前事务挂起。
+			TransactionDefinition.PROPAGATION_SUPPORTS：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。
+			TransactionDefinition.PROPAGATION_NOT_SUPPORTED：以非事务方式运行，如果当前存在事务，则把当前事务挂起。
+			TransactionDefinition.PROPAGATION_NEVER：以非事务方式运行，如果当前存在事务，则抛出异常。
+			TransactionDefinition.PROPAGATION_MANDATORY：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。
+			TransactionDefinition.PROPAGATION_NESTED：如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。
+```
+		3.3spring事物隔离级别指若干个并发的事务之间的隔离程度
+```
+			1TransactionDefinition.ISOLATION_DEFAULT：这是默认值，表示使用底层数据库的默认隔离级别。对大部分数据库而言，
+				通常这值就是TransactionDefinition.ISOLATION_READ_COMMITTED。
+				mysql默认隔离级别TransactionDefinition.ISOLATION_REPEATABLE_READ
+				InnoDB默认隔离级别TransactionDefinition.ISOLATION_REPEATABLE_READ
+				SQL Server的缺省隔离级别TransactionDefinition.ISOLATION_READ_COMMITTED。
+				Oracle缺省的设置是TransactionDefinition.ISOLATION_READ_COMMITTED。
+				就是我在修改数据时，不允许别人读取。
+			2TransactionDefinition.ISOLATION_READ_UNCOMMITTED：该隔离级别表示一个事务可以读取另一个事务修改但还没有提交的数据。
+				该级别不能防止脏读和不可重复读，因此很少使用该隔离级别。
+				就是很少使用，我在查询别人可以修改数据，脏读，可重复读
+			3TransactionDefinition.ISOLATION_READ_COMMITTED：该隔离级别表示一个事务只能读取另一个事务已经提交的数据。
+				该级别可以防止脏读，这也是大多数情况下的推荐值。
+				就是我在修改数据时，不允许别人读取。
+			4TransactionDefinition.ISOLATION_REPEATABLE_READ：该隔离级别表示一个事务在整个过程中可以多次重复执行某个查询，
+				并且每次返回的记录都相同。即使在多次查询之间有新增的数据满足该查询，这些新增的记录也会被忽略。该级别可以防止脏读和不可重复读。
+				就是当我在查询数据时，不允许别的人来修改数据。
+			5TransactionDefinition.ISOLATION_SERIALIZABLE：所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，
+				该级别可以防止脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会用到该级别。
+				就是表明事务被处理为顺序执行
+```
 ## 	4springMVC的技术知识
 
 >		3.1springMVC的生命周期及请求发送流程
